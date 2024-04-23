@@ -6,7 +6,7 @@ FROM golang:${GO_VERSION}-alpine AS builder
 WORKDIR /src
 
 # Download Go modules
-COPY go.mod ./
+COPY go.mod go.sum ./
 RUN go mod download
 
 # Import the code from the context.
