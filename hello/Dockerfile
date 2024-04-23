@@ -6,13 +6,13 @@ FROM golang:${GO_VERSION}-alpine AS builder
 WORKDIR /src
 
 # Download Go modules
-COPY hello/go.mod hello/go.sum ./
+COPY go.mod ./
 RUN go mod download
 
 # Import the code from the context.
 COPY ./ ./
-
+RUN ls -la
 # Build
-RUN CGO_ENABLED=0 GOOS=linux go build -o /hello ./hello/main.go
+RUN CGO_ENABLED=0 GOOS=linux go build -o /hello ./main.go
 
 ENTRYPOINT [ "/hello" ]
