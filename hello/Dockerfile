@@ -15,4 +15,9 @@ RUN ls -la
 # Build
 RUN CGO_ENABLED=0 GOOS=linux go build -o /hello ./main.go
 
+# Final stage: the running container.
+FROM gcr.io/distroless/static-debian12:nonroot as final
+
+COPY --from=builder /hello /hello
+
 ENTRYPOINT [ "/hello" ]
