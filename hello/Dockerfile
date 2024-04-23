@@ -16,7 +16,8 @@ RUN ls -la
 RUN CGO_ENABLED=0 GOOS=linux go build -o /hello ./main.go
 
 # Final stage: the running container.
-FROM gcr.io/distroless/static-debian12:nonroot as final
+#FROM gcr.io/distroless/static-debian12:nonroot as final
+FROM public.ecr.aws/lambda/provided:al2023 as final
 
 COPY --from=builder /hello /hello
 
