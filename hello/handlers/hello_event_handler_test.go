@@ -28,8 +28,8 @@ func TestHandleHelloEvent(t *testing.T) {
 		},
 		"nil": {
 			args:    args{event: nil},
-			want:    "Hello, World!",
-			wantErr: false,
+			want:    "",
+			wantErr: true,
 		},
 	}
 	for name, tt := range tests {
