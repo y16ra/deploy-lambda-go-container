@@ -11,7 +11,7 @@ type HelloEvent struct {
 }
 
 func HandleRequest(ctx context.Context, event *HelloEvent) (string, error) {
-	if event == nil {
+	if event == nil || len(event.Name) == 0 {
 		return "Hello, World!", nil
 	}
 	return "Hello, " + event.Name + "!", nil
